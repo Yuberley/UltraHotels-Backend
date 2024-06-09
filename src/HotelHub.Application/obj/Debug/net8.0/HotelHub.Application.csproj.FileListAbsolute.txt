@@ -1,0 +1,16 @@
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\bin\Debug\net8.0\HotelHub.Application.deps.json
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\bin\Debug\net8.0\HotelHub.Application.dll
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\bin\Debug\net8.0\HotelHub.Application.pdb
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\bin\Debug\net8.0\HotelHub.Domain.dll
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\bin\Debug\net8.0\HotelHub.Domain.pdb
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\HotelHub.Application.csproj.AssemblyReference.cache
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\HotelHub.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\HotelHub.Application.AssemblyInfoInputs.cache
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\HotelHub.Application.AssemblyInfo.cs
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\HotelHub.Application.csproj.CoreCompileInputs.cache
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\HotelHub.Application.sourcelink.json
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\HotelHub.760E4B96.Up2Date
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\HotelHub.Application.dll
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\refint\HotelHub.Application.dll
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\HotelHub.Application.pdb
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Application\obj\Debug\net8.0\ref\HotelHub.Application.dll

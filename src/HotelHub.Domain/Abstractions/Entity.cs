@@ -1,5 +1,12 @@
 namespace HotelHub.Domain.Abstractions;
 
+
+/// <summary>
+/// This is an abstract class that provides a base structure for all entities in the domain.
+/// </summary>
+/// <remarks>
+/// This class is responsible for managing domain events.
+/// </remarks>
 public abstract class Entity
 {
     
