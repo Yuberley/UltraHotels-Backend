@@ -1,0 +1,18 @@
+﻿services:
+  hotelhub:
+    image: hotelhub
+    build:
+      context: .
+      dockerfile: HotelHub/Dockerfile
+
+  hotelhub.webapi:
+    image: hotelhub.webapi
+    build:
+      context: .
+      dockerfile: src/HotelHub.WebAPi/Dockerfile
+
+  hotelhub.webapi-1:
+    image: hotelhub.webapi-1
+    build:
+      context: .
+      dockerfile: src/HotelHub.WebAPI/Dockerfile

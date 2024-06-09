@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "a66bBpeIqMzUeFgNLf6FUFIsyVEPVlxK74KRiBrsbCjusfgACur6+nODPTMwKuVurnQBul/kW+pTxlyePKHiQA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yuber\\Desktop\\HotelHub\\src\\HotelHub.Application\\HotelHub.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yuber\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.1\\fluentvalidation.dependencyinjectionextensions.11.9.1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\mediatr\\12.3.0\\mediatr.12.3.0.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

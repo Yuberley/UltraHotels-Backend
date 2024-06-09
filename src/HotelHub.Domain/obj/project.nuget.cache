@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "a+/u8JsPFcTeMBiwuWCMqaQS+izl5HuJ1OubA/k67BTybF4Gtn6vCjqK5WtdiNofocIBnPBh9xDyZmckvvfwlg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yuber\\Desktop\\HotelHub\\src\\HotelHub.Domain\\HotelHub.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yuber\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
