@@ -11,7 +11,7 @@ public abstract class Entity
 {
     
     private readonly List<IDomainEvent> _domainEvents = new();
-    private Guid Id { get; init; }
+    public Guid Id { get; init; }
     
     
     protected Entity(Guid id)

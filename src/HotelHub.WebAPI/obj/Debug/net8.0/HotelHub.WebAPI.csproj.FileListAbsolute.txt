@@ -49,3 +49,7 @@ C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\obj\Debug\net8.0\refint\Hote
 C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\obj\Debug\net8.0\HotelHub.WebAPI.pdb
 C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\obj\Debug\net8.0\HotelHub.WebAPI.genruntimeconfig.cache
 C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\obj\Debug\net8.0\ref\HotelHub.WebAPI.dll
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\bin\Debug\net8.0\EFCore.NamingConventions.dll
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
