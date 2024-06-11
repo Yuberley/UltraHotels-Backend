@@ -18,7 +18,7 @@ jobs:
 
       - name: Build website image
         run: |
-          docker build --platform linux --tag yuberley/hotelhub.webapi:latest -f src/HotelHub.WebAPI/Dockerfile
+          docker build --platform linux --tag yuberley/hotelhub.webapi:latest -f src/HotelHub.WebAPI/Dockerfile .
 
       - name: Publish website image
         run: |
