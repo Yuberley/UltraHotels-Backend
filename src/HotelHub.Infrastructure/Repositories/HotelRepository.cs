@@ -25,7 +25,7 @@ internal sealed class HotelRepository : IHotelRepository
         return _dbContext.Hotels.ToListAsync(cancellationToken);
     }
     
-    public void Insert(Hotel hotel)
+    public void Add(Hotel hotel)
     {
         _dbContext.Hotels.Add(hotel);
     }

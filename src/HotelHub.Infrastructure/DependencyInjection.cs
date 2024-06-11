@@ -36,15 +36,13 @@ public static class DependencyInjection
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention());
         
-        // Register repositories here using the AddScoped method
-        services.AddScoped<IHotelRepository, HotelRepository>();
-
-        
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
         services.AddSingleton<IDbConnectionFactory>(_ =>
             new DbConnectionFactory(connectionString));
 
+        // Register repositories here using the AddScoped method
+        services.AddScoped<IHotelRepository, HotelRepository>();
         // SqlMapper.AddTypeHandler(new DateOnlyTypeHandler());
     }
 

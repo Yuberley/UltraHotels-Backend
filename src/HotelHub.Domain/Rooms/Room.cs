@@ -13,7 +13,7 @@ public sealed class Room : Entity
         Money baseCost,
         Taxes taxes, 
         IsActive isActive,
-        DateTime createdAt) : base(id)
+        DateTime createdAtOnUtc) : base(id)
     {
         HotelId = hotelId;
         RoomNumber = roomNumber;
@@ -21,7 +21,7 @@ public sealed class Room : Entity
         BaseCost = baseCost;
         Taxes = taxes;
         IsActive = isActive;
-        CreatedAt = createdAt;
+        CreatedAtOnUtc = createdAtOnUtc;
     }
 
     // This empty constructor is necessary for Entity Framework,
@@ -34,7 +34,7 @@ public sealed class Room : Entity
     public Money BaseCost { get; private set; }
     public Taxes Taxes { get; private set; }
     public IsActive IsActive { get; private set; }
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAtOnUtc { get; private set; }
     
     public void UpdateRoom(RoomNumber roomNumber, RoomType type, Money baseCost, Taxes taxes, IsActive isActive)
     {
@@ -43,15 +43,5 @@ public sealed class Room : Entity
         BaseCost = baseCost;
         Taxes = taxes;
         IsActive = isActive;
-    }
-    
-    public void DeactivateRoom()
-    {
-        IsActive = IsActive.No;
-    }
-    
-    public void ActivateRoom()
-    {
-        IsActive = IsActive.Yes;
     }
 }

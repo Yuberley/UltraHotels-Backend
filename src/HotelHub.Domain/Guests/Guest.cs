@@ -12,7 +12,7 @@ public sealed  class Guest : Entity
         Email email,
         PhoneNumber phoneNumber,
         BirthDate birthDate,
-        Gender gerder,
+        Gender gender,
         DocumentType documentType,
         DocumentNumber documentNumber,
         EmergencyContactFullName emergencyContactFullName,
@@ -26,7 +26,7 @@ public sealed  class Guest : Entity
         Email = email;
         PhoneNumber = phoneNumber;
         BirthDate = birthDate;
-        Gerder = gerder;
+        Gender = gender;
         DocumentType = documentType;
         DocumentNumber = documentNumber;
         EmergencyContactFullName = emergencyContactFullName;
@@ -34,13 +34,17 @@ public sealed  class Guest : Entity
         CreatedAtOnUtc = createdAtOnUtc;
     }
     
+    // This empty constructor is necessary for Entity Framework,
+    // they require a constructor without parameters for instance creation.
+    private Guest() {}
+    
     public Guid BookingId { get; private set; }
     public FirstName FirstName { get; private set; }
     public LastName LastName { get; private set; }
     public Email Email { get; private set; }
     public PhoneNumber PhoneNumber { get; private set; }
     public BirthDate BirthDate { get; private set; }
-    public Gender Gerder { get; private set; }
+    public Gender Gender { get; private set; }
     public DocumentType DocumentType { get; private set; }
     public DocumentNumber DocumentNumber { get; private set; }
     public EmergencyContactFullName EmergencyContactFullName { get; private set; }

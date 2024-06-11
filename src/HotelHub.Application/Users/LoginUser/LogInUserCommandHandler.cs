@@ -4,7 +4,7 @@ using HotelHub.Domain.Abstractions;
 
 namespace HotelHub.Application.Users.LoginUser;
 
-internal sealed class LogInUserCommandHandler : ICommandHandler<LogInUserCommand, AccessTokenResponse>
+internal sealed class LogInUserCommandHandler 
 {
     private readonly IJwtService _jwtService;
     

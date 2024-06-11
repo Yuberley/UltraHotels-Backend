@@ -3,7 +3,7 @@ using HotelHub.Domain.Abstractions;
 
 namespace HotelHub.Application.Users.RegisterUser;
 
-internal sealed class RegisterUserCommandHandler : ICommandHandler<RegisterUserCommand, Guid>
+internal sealed class RegisterUserCommandHandler
 {
     private readonly IUnitOfWork _unitOfWork;
     

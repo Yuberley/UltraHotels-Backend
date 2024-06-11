@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace HotelHub.Domain.Guests;
 
-public record PhoneNumber
+public partial record PhoneNumber
 {
     // The phone number must start with a +
     // The phone number must have at least 7 digits and at most 15 digits (excluding the +)
@@ -13,11 +13,14 @@ public record PhoneNumber
     
     public static PhoneNumber Create(string value)
     {
-        if (!Regex.IsMatch(value, PhoneNumberPattern))
+        if (!NumberPhoneRegex().IsMatch(value))
         {
             throw new ApplicationException("The phone number is invalid");
         }
         
         return new PhoneNumber(value);
     }
+
+    [GeneratedRegex(PhoneNumberPattern)]
+    private static partial Regex NumberPhoneRegex();
 }

@@ -4,7 +4,7 @@ public interface IHotelRepository
 {
     Task<Hotel?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task<List<Hotel>> GetAllAsync(CancellationToken cancellationToken = default);
-    void Insert(Hotel hotel);
+    void Add(Hotel hotel);
     void Update(Hotel hotel);
     void Delete(Hotel hotel);
 }

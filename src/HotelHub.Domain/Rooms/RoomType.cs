@@ -28,4 +28,4 @@ public sealed record RoomType(string Value)
         MasterSuite,
         PresidentialSuite
     };
-};
+}
