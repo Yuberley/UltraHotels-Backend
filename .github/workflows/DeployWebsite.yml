@@ -1,0 +1,37 @@
+name: Docker Hotel-HUB
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  deploy:
+    name: docker_build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check repository
+        uses: actions/check@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3.2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build website image
+        run: |
+          docker build --platform linux --tag yuberley/hotelhub.webapi:latest -f src/DockerFile
+
+      - name: Publish website image
+        run: |
+            docker push yuberley/hotelhub.webapi:latest
+
+      - name: Service Auth Azure
+        uses: azure/webapps-deploy@v3.0.1
+        with:
+          app-name: 'hotelhub.webapi'
+          publish-profile: ${{ secrets.AZURE_PUBLISH_SUSCRIPTION }}
+          images: 'yuberley/hotelhub.webapi:latest'
+    
+
+
+    
+  
