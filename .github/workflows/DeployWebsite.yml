@@ -27,7 +27,7 @@ jobs:
       - name: Service Auth Azure
         uses: azure/webapps-deploy@v3.0.1
         with:
-          app-name: 'hotelhub.webapi'
+          app-name: 'hotel-hub'
           publish-profile: ${{ secrets.AZURE_PUBLISH_SUSCRIPTION }}
           images: 'yuberley/hotelhub.webapi:latest'
     
