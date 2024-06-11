@@ -54,6 +54,8 @@ internal static class SeedDataExtentions
                     Id = idRoom,
                     RoomNumber = faker.Random.Number(1, 100),
                     Type = randomType.Value,
+                    NumberGuestsAdults = faker.Random.Number(1, 4),
+                    NumberGuestsChildren = faker.Random.Number(0, 2),
                     BaseCostAmount = faker.Random.Decimal(50, 1000),
                     BaseCostCurrency = "USD",
                     Taxes = faker.Random.Decimal(5, 20),
@@ -62,7 +64,6 @@ internal static class SeedDataExtentions
                     HotelId = idHotel
                 });
             }
-            
             
         }
         
@@ -74,8 +75,8 @@ internal static class SeedDataExtentions
         
         const string sqlRooms = """
             INSERT INTO public.rooms
-            (id, room_number, type, base_cost_amount, base_cost_currency, taxes, is_active, created_at_on_utc, hotel_id)
-            VALUES(@Id, @RoomNumber, @Type, @BaseCostAmount, @BaseCostCurrency, @Taxes, @IsActive, @CreatedAtOnUtc, @HotelId);
+            (id, room_number, type, number_guests_adults, number_guests_children, base_cost_amount, base_cost_currency, taxes, is_active, created_at_on_utc, hotel_id)
+            VALUES(@Id, @RoomNumber, @Type, @NumberGuestsAdults, @NumberGuestsChildren, @BaseCostAmount, @BaseCostCurrency, @Taxes, @IsActive, @CreatedAtOnUtc, @HotelId);
             """;
         
         connection.Execute(sqlHotels, hotels);

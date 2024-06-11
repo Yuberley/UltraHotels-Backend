@@ -1,6 +1,6 @@
 using HotelHub.Application.Abstractions.Messaging;
 
-namespace HotelHub.Application.Hotels.Create;
+namespace HotelHub.Application.Hotels.Commands.Create;
 
 public record AddHotelCommand(
     string Name,

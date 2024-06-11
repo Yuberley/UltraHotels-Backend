@@ -3,6 +3,7 @@ using HotelHub.Application.Abstractions.Clock;
 using HotelHub.Application.Abstractions.Data;
 using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Hotels;
+using HotelHub.Domain.Rooms;
 using Microsoft.EntityFrameworkCore;
 using HotelHub.Infrastructure.Clock;
 using HotelHub.Infrastructure.Database;
@@ -43,7 +44,7 @@ public static class DependencyInjection
 
         // Register repositories here using the AddScoped method
         services.AddScoped<IHotelRepository, HotelRepository>();
-        // SqlMapper.AddTypeHandler(new DateOnlyTypeHandler());
+        services.AddScoped<IRoomRepository, RoomRepository>();
     }
 
     private static void AddApiVersioning(IServiceCollection services)

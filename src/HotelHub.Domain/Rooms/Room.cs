@@ -8,8 +8,9 @@ public sealed class Room : Entity
     public Room(
         Guid id,
         Guid hotelId, 
-        RoomNumber roomNumber, 
-        RoomType type, 
+        RoomNumber roomNumber,
+        NumberGuests numberGuests,
+        RoomType type,
         Money baseCost,
         Taxes taxes, 
         IsActive isActive,
@@ -17,6 +18,7 @@ public sealed class Room : Entity
     {
         HotelId = hotelId;
         RoomNumber = roomNumber;
+        NumberGuests = numberGuests;
         Type = type;
         BaseCost = baseCost;
         Taxes = taxes;
@@ -30,6 +32,7 @@ public sealed class Room : Entity
 
     public Guid HotelId { get; private set; }
     public RoomNumber RoomNumber { get; private set; }
+    public NumberGuests NumberGuests { get; private set; }
     public RoomType Type { get; private set; }
     public Money BaseCost { get; private set; }
     public Taxes Taxes { get; private set; }

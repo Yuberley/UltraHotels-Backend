@@ -31,7 +31,9 @@ internal sealed class HotelConfiguration : IEntityTypeConfiguration<Hotel>
         });
         
         builder.Property(hotel => hotel.IsActive)
-            .HasConversion(isActive => isActive.Value, value => IsActive.Assign(value))
+            .HasConversion(
+                isActive => isActive.Value, 
+                value => IsActive.Assign(value))
             .HasDefaultValue(IsActive.Default);
         
         builder.Property(hotel => hotel.CreatedAtOnUtc)

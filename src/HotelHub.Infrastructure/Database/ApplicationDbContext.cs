@@ -3,6 +3,7 @@ using HotelHub.Application.Exceptions;
 using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Guests;
 using HotelHub.Domain.Hotels;
+using HotelHub.Domain.Rooms;
 using HotelHub.Infrastructure.Outbox;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -22,6 +23,7 @@ public class ApplicationDbContext : DbContext, IUnitOfWork
     
     public DbSet<Hotel> Hotels { get; set; }
     public DbSet<Guest> Guests { get; set; }
+    public DbSet<Room?> Rooms { get; set; }
     
     
     // Sobreescribimos el método OnModelCreating para aplicar las configuraciones de las entidades.

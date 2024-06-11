@@ -122,3 +122,4 @@ C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\bin\Debug\net8.0\zh-Hans\Mic
 C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\bin\Debug\net8.0\Bogus.dll
 C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\bin\Debug\net8.0\Dapper.dll
+C:\Users\yuber\Desktop\HotelHub\src\HotelHub.WebAPI\bin\Debug\net8.0\AutoMapper.dll

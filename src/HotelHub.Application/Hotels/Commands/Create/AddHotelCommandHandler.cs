@@ -2,10 +2,9 @@ using HotelHub.Application.Abstractions.Clock;
 using HotelHub.Application.Abstractions.Messaging;
 using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Hotels;
-using HotelHub.Domain.Rooms;
 using HotelHub.Domain.SharedValueObjects;
 
-namespace HotelHub.Application.Hotels.Create;
+namespace HotelHub.Application.Hotels.Commands.Create;
 
 
 internal sealed class AddHotelCommandHandler : ICommandHandler<AddHotelCommand, Guid>

@@ -18,10 +18,16 @@ internal sealed class RoomConfiguration : IEntityTypeConfiguration<Room>
             .HasConversion(roomNumber => roomNumber.Value, value => new RoomNumber(value))
             .HasMaxLength(10);
             
+        builder.OwnsOne(room => room.NumberGuests, numberGuestsBuilder =>
+        {
+            numberGuestsBuilder.Property(numberGuests => numberGuests.Adults);
+            numberGuestsBuilder.Property(numberGuests => numberGuests.Children);
+        });
+        
         builder.Property(room => room.Type)
             .HasConversion(
-                roomType => roomType.ToString(),
-                value => (RoomType)Enum.Parse(typeof(RoomType), value))
+                roomType => roomType.Value, // Convertir a string para almacenar en la base de datos
+                value => RoomType.FromValue(value)) // Convertir de string a RoomType al leer desde la base de datos
             .HasMaxLength(50);
         
         builder.OwnsOne(room => room.BaseCost, costBuilder =>
