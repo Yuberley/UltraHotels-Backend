@@ -1,9 +1,11 @@
 using HotelHub.Application.Abstractions.Clock;
 using HotelHub.Application.Exceptions;
 using HotelHub.Domain.Abstractions;
+using HotelHub.Domain.Bookings;
 using HotelHub.Domain.Guests;
 using HotelHub.Domain.Hotels;
 using HotelHub.Domain.Rooms;
+using HotelHub.Domain.Users;
 using HotelHub.Infrastructure.Outbox;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -21,10 +23,13 @@ public class ApplicationDbContext : DbContext, IUnitOfWork
         _dateTimeProvider = dateTimeProvider;
     }
     
+    
     public DbSet<Hotel> Hotels { get; set; }
     public DbSet<Guest> Guests { get; set; }
-    public DbSet<Room?> Rooms { get; set; }
+    public DbSet<Room> Rooms { get; set; }
+    public DbSet<Booking> Bookings { get; set; }
     
+    public DbSet<User> Users { get; set; }
     
     // Sobreescribimos el método OnModelCreating para aplicar las configuraciones de las entidades.
     protected override void OnModelCreating(ModelBuilder modelBuilder)

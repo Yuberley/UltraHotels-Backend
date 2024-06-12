@@ -43,12 +43,11 @@ internal sealed class RoomConfiguration : IEntityTypeConfiguration<Room>
                 taxes => taxes.Value, 
                 value => Taxes.FromValue(value))
             .HasColumnType("decimal(5, 2)");
-            
-            
+        
         builder.Property(room => room.IsActive)
             .HasConversion(
                 isActive => isActive.Value,
-                value => IsActive.Assign(value))
+                value => IsActive.FromValue(value))
             .HasDefaultValue(IsActive.Default);
         
         builder.Property(room => room.CreatedAtOnUtc)

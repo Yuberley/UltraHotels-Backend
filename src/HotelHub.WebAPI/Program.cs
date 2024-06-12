@@ -4,6 +4,8 @@ using Asp.Versioning.Builder;
 using HotelHub.Application;
 using HotelHub.Infrastructure;
 using HotelHub.WebAPI.Extrensions;
+using HotelHub.WebAPI.OptionsSetup;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddProblemDetails();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer();
+
+builder.Services.ConfigureOptions<JwtOptionsSetup>();
+builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();
 
 var app = builder.Build();
 
@@ -47,12 +55,14 @@ if (app.Environment.IsDevelopment())
     app.ApplyMigrations();
     
     // REMARK: Uncomment if you want to seed initial data.
-    // app.SeedData();
+    app.SeedData();
 }
 
 app.UseHttpsRedirection();
 
 app.UseExceptionHandler();
+
+app.UseCustomExceptionHandler();
 
 app.UseAuthentication();
 

@@ -5,7 +5,7 @@ using HotelHub.Domain.Hotels;
 
 namespace HotelHub.Application.Hotels.Queries.GetById;
 
-public class GetHotelByIdQueryHandler : IQueryHandler<GetHotelByIdQuery, HotelResponse>
+internal sealed class GetHotelByIdQueryHandler : IQueryHandler<GetHotelByIdQuery, HotelResponse>
 {
     private readonly IHotelRepository _hotelRepository;
     

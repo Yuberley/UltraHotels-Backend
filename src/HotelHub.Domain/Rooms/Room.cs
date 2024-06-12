@@ -38,13 +38,4 @@ public sealed class Room : Entity
     public Taxes Taxes { get; private set; }
     public IsActive IsActive { get; private set; }
     public DateTime CreatedAtOnUtc { get; private set; }
-    
-    public void UpdateRoom(RoomNumber roomNumber, RoomType type, Money baseCost, Taxes taxes, IsActive isActive)
-    {
-        RoomNumber = roomNumber;
-        Type = type;
-        BaseCost = baseCost;
-        Taxes = taxes;
-        IsActive = isActive;
-    }
 }

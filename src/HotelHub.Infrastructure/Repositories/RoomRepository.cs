@@ -20,14 +20,14 @@ internal sealed class RoomRepository : IRoomRepository
         return await _dbContext.Rooms.FirstOrDefaultAsync(r => r.Id == id, cancellationToken);
     }
     
-    public Task<List<Room?>> GetAllAsync(CancellationToken cancellationToken = default)
+    public Task<List<Room>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return _dbContext.Rooms.ToListAsync(cancellationToken);
     }
     
-    public async Task<List<Room>> GetByHotelIdAsync(Guid hotelId, CancellationToken cancellationToken)
+    public Task<List<Room>> SearchAsync(string sqlQuery, CancellationToken cancellationToken = default)
     {
-        return await _dbContext.Rooms.Where(r => r.HotelId == hotelId).ToListAsync(cancellationToken);
+        return _dbContext.Rooms.FromSqlRaw(sqlQuery).ToListAsync(cancellationToken);
     }
     
     public void Add(Room room)

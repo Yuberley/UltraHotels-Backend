@@ -8,7 +8,8 @@ public sealed class RoomResponse
     public NumberGuestsResponse NumberGuests { get; init; }
     public string Type { get; init; }
     public decimal BaseCost { get; init; }
-    public string Currency { get; init; }
+    public string BaseCostCurrency { get; init; }
+    public decimal Taxes { get; init; }
     public bool IsActive { get; init; }
     public DateTime CreatedAtOnUtc { get; init; }
 }

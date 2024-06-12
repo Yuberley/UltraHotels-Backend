@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace HotelHub.Application.Hotels.Commands.Create;
 
-internal sealed class AddHotelCommandValidator : AbstractValidator<AddHotelCommand>
+public sealed class AddHotelCommandValidator : AbstractValidator<AddHotelCommand>
 {
     public AddHotelCommandValidator()
     {

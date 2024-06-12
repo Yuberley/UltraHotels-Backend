@@ -1,4 +1,5 @@
 using HotelHub.Domain.Abstractions;
+using HotelHub.Domain.SharedValueObjects;
 
 namespace HotelHub.Domain.Guests;
 

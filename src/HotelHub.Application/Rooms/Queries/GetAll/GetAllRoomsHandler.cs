@@ -29,7 +29,8 @@ internal sealed class GetAllRoomsHandler : IQueryHandler<GetAllRoomsQuery, IEnum
             },
             Type = room.Type.Value,
             BaseCost = room.BaseCost.Amount,
-            Currency = room.BaseCost.Currency.Code,
+            BaseCostCurrency = room.BaseCost.Currency.Code,
+            Taxes = room.Taxes.Value,
             IsActive = room.IsActive.Value,
             CreatedAtOnUtc = room.CreatedAtOnUtc
         });

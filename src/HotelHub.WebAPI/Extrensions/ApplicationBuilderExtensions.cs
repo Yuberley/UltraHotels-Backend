@@ -1,4 +1,5 @@
 using HotelHub.Infrastructure.Database;
+using HotelHub.WebAPI.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelHub.WebAPI.Extrensions;
@@ -12,5 +13,10 @@ public static class ApplicationBuilderExtensions
         using ApplicationDbContext dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         
         dbContext.Database.Migrate();
+    }
+    
+    public static void UseCustomExceptionHandler(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
     }
 }

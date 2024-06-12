@@ -11,12 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Bookings\" />
-      <Folder Include="Guest\" />
-      <Folder Include="Hotels\Commands\Delete\" />
       <Folder Include="Hotels\Commands\Update\" />
-      <Folder Include="Rooms\Commands\Create\" />
-      <Folder Include="Users\GetLoggedInUser\" />
     </ItemGroup>
 
     <ItemGroup>

@@ -14,7 +14,9 @@ internal sealed class HotelConfiguration : IEntityTypeConfiguration<Hotel>
         builder.HasKey(hotel => hotel.Id);
         
         builder.Property(hotel => hotel.Name)
-            .HasConversion(name => name.Value, value => new Name(value))
+            .HasConversion(
+                name => name.Value,
+                value => new Name(value))
             .HasMaxLength(200);
         
         builder.Property(hotel => hotel.Description)
@@ -33,7 +35,7 @@ internal sealed class HotelConfiguration : IEntityTypeConfiguration<Hotel>
         builder.Property(hotel => hotel.IsActive)
             .HasConversion(
                 isActive => isActive.Value, 
-                value => IsActive.Assign(value))
+                value => IsActive.FromValue(value))
             .HasDefaultValue(IsActive.Default);
         
         builder.Property(hotel => hotel.CreatedAtOnUtc)

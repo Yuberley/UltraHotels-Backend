@@ -2,14 +2,14 @@ namespace HotelHub.Domain.Rooms;
 
 public sealed record RoomType(string Value)
 {
-    public static readonly RoomType Single = new RoomType("Single");
-    public static readonly RoomType Double = new RoomType("Double");
-    public static readonly RoomType Triple = new RoomType("Triple");
-    public static readonly RoomType King = new RoomType("King");
-    public static readonly RoomType Studio = new RoomType("Studio");
-    public static readonly RoomType Suite = new RoomType("Suite");
-    public static readonly RoomType MasterSuite = new RoomType("MasterSuite");
-    public static readonly RoomType PresidentialSuite = new RoomType("PresidentialSuite");
+    private static readonly RoomType Single = new RoomType("Single");
+    private static readonly RoomType Double = new RoomType("Double");
+    private static readonly RoomType Triple = new RoomType("Triple");
+    private static readonly RoomType King = new RoomType("King");
+    private static readonly RoomType Studio = new RoomType("Studio");
+    private static readonly RoomType Suite = new RoomType("Suite");
+    private static readonly RoomType MasterSuite = new RoomType("MasterSuite");
+    private static readonly RoomType PresidentialSuite = new RoomType("PresidentialSuite");
     
     public static RoomType FromValue(string value)
     {

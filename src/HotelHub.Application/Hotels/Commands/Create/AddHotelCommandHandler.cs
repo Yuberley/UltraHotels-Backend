@@ -9,11 +9,9 @@ namespace HotelHub.Application.Hotels.Commands.Create;
 
 internal sealed class AddHotelCommandHandler : ICommandHandler<AddHotelCommand, Guid>
 {
-    
     private readonly IUnitOfWork _unitOfWork;
     private readonly IHotelRepository _hotelRepository;
     private readonly IDateTimeProvider _dateTimeProvider;
-
     
     public AddHotelCommandHandler(IUnitOfWork unitOfWork, IHotelRepository hotelRepository, IDateTimeProvider dateTimeProvider)
     {
