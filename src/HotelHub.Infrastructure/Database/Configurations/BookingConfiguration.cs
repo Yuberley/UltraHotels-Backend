@@ -50,6 +50,18 @@ internal sealed class BookingConfiguration : IEntityTypeConfiguration<Booking>
         builder.Property(booking => booking.Status)
             .HasConversion<int>();
         
+        builder.Property(booking => booking.EmergencyContactPhoneNumber)
+            .HasConversion(
+                ecpn => ecpn.Value,
+                value => PhoneNumber.Create(value))
+            .HasMaxLength(15);
+        
+        builder.Property(booking => booking.EmergencyContactFullName)
+            .HasConversion(
+                ecfn => ecfn.Value,
+                value => new EmergencyContactFullName(value))
+            .HasMaxLength(200);
+        
         builder.Property(booking => booking.CreatedOnUtc)
             .HasDefaultValueSql("NOW()");
         

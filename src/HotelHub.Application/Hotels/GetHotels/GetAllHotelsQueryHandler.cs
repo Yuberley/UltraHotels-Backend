@@ -2,7 +2,7 @@ using HotelHub.Application.Abstractions.Messaging;
 using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Hotels;
 
-namespace HotelHub.Application.Hotels.Queries.GetAll;
+namespace HotelHub.Application.Hotels.GetHotels;
 
 internal sealed class GetAllHotelsQueryHandler : IQueryHandler<GetAllHotelsQuery, IEnumerable<HotelResponse>>
 {

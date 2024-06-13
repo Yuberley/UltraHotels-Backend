@@ -5,7 +5,7 @@ using HotelHub.Domain.Hotels;
 using HotelHub.Domain.Rooms;
 using HotelHub.Domain.SharedValueObjects;
 
-namespace HotelHub.Application.Rooms.Commands.Create;
+namespace HotelHub.Application.Rooms.CreateRoom;
 
 internal sealed class AddRoomCommandHandler : ICommandHandler<AddRoomCommand, Guid>
 {

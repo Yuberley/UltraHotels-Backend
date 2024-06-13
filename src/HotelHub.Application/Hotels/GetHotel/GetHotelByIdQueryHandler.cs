@@ -1,9 +1,8 @@
 using HotelHub.Application.Abstractions.Messaging;
-using HotelHub.Application.Hotels.Queries.GetAll;
 using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Hotels;
 
-namespace HotelHub.Application.Hotels.Queries.GetById;
+namespace HotelHub.Application.Hotels.GetHotel;
 
 internal sealed class GetHotelByIdQueryHandler : IQueryHandler<GetHotelByIdQuery, HotelResponse>
 {

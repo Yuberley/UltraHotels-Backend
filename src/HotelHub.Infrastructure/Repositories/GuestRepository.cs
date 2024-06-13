@@ -20,13 +20,14 @@ public class GuestRepository : IGuestRepository
         return _dbContext.Guests.FirstOrDefaultAsync(g => g.Id == id, cancellationToken);
     }
     
+    public void AddList(List<Guest> guests)
+    {
+        _dbContext.Guests.AddRange(guests);
+    }
+    
     public Task<List<Guest>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return _dbContext.Guests.ToListAsync(cancellationToken);
     }
     
-    public void Insert(Guest guest)
-    {
-        _dbContext.Guests.Add(guest);
-    }
 }

@@ -1,4 +1,4 @@
-namespace HotelHub.Application.Rooms.Queries;
+namespace HotelHub.Application.Rooms;
 
 public sealed class NumberGuestsResponse
 {

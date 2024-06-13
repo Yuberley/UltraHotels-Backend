@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace HotelHub.Domain.Guests;
+namespace HotelHub.Domain.SharedValueObjects;
 
 public partial record PhoneNumber
 {

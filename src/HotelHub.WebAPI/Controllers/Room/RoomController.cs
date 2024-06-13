@@ -1,8 +1,8 @@
 using Asp.Versioning;
-using HotelHub.Application.Rooms.Commands.Create;
-using HotelHub.Application.Rooms.Queries;
-using HotelHub.Application.Rooms.Queries.GetAll;
-using HotelHub.Application.Rooms.Queries.SearchRooms;
+using HotelHub.Application.Rooms;
+using HotelHub.Application.Rooms.CreateRoom;
+using HotelHub.Application.Rooms.GetRooms;
+using HotelHub.Application.Rooms.SearchRooms;
 using HotelHub.Domain.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -69,9 +69,12 @@ public class RoomController : ControllerBase
     {
         var query = new SearchRoomsQuery(
             request.StartDate,
-            request.EndDate);
+            request.EndDate,
+            request.NumberAdults,
+            request.NumberChildren,
+            request.Country);
         
-        Result<IEnumerable<RoomResponse>> result = await _sender.Send(query, cancellationToken);
+        Result<IReadOnlyList<RoomSearchResponse>> result = await _sender.Send(query, cancellationToken);
         
         if (result.IsFailure)
         {

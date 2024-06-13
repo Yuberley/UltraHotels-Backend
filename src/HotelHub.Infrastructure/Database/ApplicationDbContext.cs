@@ -7,6 +7,7 @@ using HotelHub.Domain.Hotels;
 using HotelHub.Domain.Rooms;
 using HotelHub.Domain.Users;
 using HotelHub.Infrastructure.Outbox;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -15,12 +16,14 @@ namespace HotelHub.Infrastructure.Database;
 public class ApplicationDbContext : DbContext, IUnitOfWork
 {
     private readonly IDateTimeProvider _dateTimeProvider;
+    private readonly IMediator _mediator;
     
     public ApplicationDbContext(
         DbContextOptions<ApplicationDbContext> options,
-        IDateTimeProvider dateTimeProvider) : base(options)
+        IDateTimeProvider dateTimeProvider, IMediator mediator) : base(options)
     {
         _dateTimeProvider = dateTimeProvider;
+        _mediator = mediator;
     }
     
     
@@ -46,9 +49,23 @@ public class ApplicationDbContext : DbContext, IUnitOfWork
     {
         try
         {
+            IEnumerable<IDomainEvent> domainEvents = ChangeTracker
+                .Entries<Entity>()
+                .Select(entry => entry.Entity)
+                .SelectMany(entity =>
+                {
+                    IReadOnlyList<IDomainEvent> domainEvents = entity.GetDomainEvents();
+                    
+                    return domainEvents;
+                })
+                .ToList();
+            
             AddDomainEventsAsOutboxMessages();
             
+            
             int result = await base.SaveChangesAsync(cancellationToken);
+            
+            await PublishDomainEventsAsync(domainEvents, cancellationToken);
             
             return result;
         }
@@ -58,6 +75,13 @@ public class ApplicationDbContext : DbContext, IUnitOfWork
         }
     }
     
+    private async Task PublishDomainEventsAsync(IEnumerable<IDomainEvent> domainEvents, CancellationToken cancellationToken)
+    {
+        foreach (var domainEvent in domainEvents)
+        {
+            await _mediator.Publish(domainEvent, cancellationToken);
+        }
+    }
     
     /// <summary>
     /// Se encarga de pasar los eventos de dominio (IDomainEvent) generados por las entidades durante

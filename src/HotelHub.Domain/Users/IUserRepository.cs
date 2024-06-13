@@ -1,3 +1,5 @@
+using HotelHub.Domain.SharedValueObjects;
+
 namespace HotelHub.Domain.Users;
 
 public interface IUserRepository

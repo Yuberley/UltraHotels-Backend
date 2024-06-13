@@ -17,6 +17,8 @@ public sealed class Booking : Entity
         Money taxesPrice,
         Money totalPrice,
         BookingStatus status,
+        EmergencyContactFullName emergencyContactFullName,
+        PhoneNumber emergencyContactPhoneNumber,
         DateTime createdOnUtc)
         : base(id)
     {
@@ -28,6 +30,8 @@ public sealed class Booking : Entity
         TaxesPrice = taxesPrice;
         TotalPrice = totalPrice; 
         Status = status;
+        EmergencyContactFullName = emergencyContactFullName;
+        EmergencyContactPhoneNumber = emergencyContactPhoneNumber;
         CreatedOnUtc = createdOnUtc;
     }
     
@@ -53,6 +57,10 @@ public sealed class Booking : Entity
     
     public BookingStatus Status { get; private set; }
     
+    public EmergencyContactFullName EmergencyContactFullName { get; private set; }
+    
+    public PhoneNumber EmergencyContactPhoneNumber { get; private set; }
+    
     public DateTime CreatedOnUtc { get; private set; }
     
     
@@ -61,7 +69,10 @@ public sealed class Booking : Entity
         Guid userId,
         DateRange duration,
         DateTime createdOnUtc,
-        PricingService pricingService)
+        PricingService pricingService,
+        EmergencyContactFullName emergencyContactFullName,
+        PhoneNumber emergencyContactPhoneNumber
+        )
     {
         PricingDetails pricingDetails = pricingService.CalculatePrice(room, duration);
         
@@ -75,6 +86,8 @@ public sealed class Booking : Entity
             pricingDetails.TaxesPrice,
             pricingDetails.TotalPrice,
             BookingStatus.Reserved,
+            emergencyContactFullName,
+            emergencyContactPhoneNumber,
             createdOnUtc);
         
         booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id));

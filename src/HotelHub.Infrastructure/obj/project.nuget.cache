@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jrNnN7bQmdyq9Gr0kssQj1NdK09bihosRcYbunxz+IuNq75Nc/S+KqINEIDHewb/fhZ/A0W/cx1jeQRhAcQnQw==",
+  "dgSpecHash": "uxzF1lnzAwNjLrnps6ogtofZ5bPb+Cn5FE3IfXtE17bn5oQpcoB0f3egGT8I48XnLj46r5tYlKoSxy5HoMC64w==",
   "success": true,
   "projectFilePath": "C:\\Users\\yuber\\Desktop\\HotelHub\\src\\HotelHub.Infrastructure\\HotelHub.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\yuber\\.nuget\\packages\\asp.versioning.mvc\\8.0.0\\asp.versioning.mvc.8.0.0.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\asp.versioning.mvc.apiexplorer\\8.0.0\\asp.versioning.mvc.apiexplorer.8.0.0.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\efcore.namingconventions\\8.0.0\\efcore.namingconventions.8.0.0.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.1\\fluentvalidation.dependencyinjectionextensions.11.9.1.nupkg.sha512",

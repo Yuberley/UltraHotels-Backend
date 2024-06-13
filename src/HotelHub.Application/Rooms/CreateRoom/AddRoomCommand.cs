@@ -1,6 +1,6 @@
 using HotelHub.Application.Abstractions.Messaging;
 
-namespace HotelHub.Application.Rooms.Commands.Create;
+namespace HotelHub.Application.Rooms.CreateRoom;
 
 public record AddRoomCommand(
     Guid HotelId,

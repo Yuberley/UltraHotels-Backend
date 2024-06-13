@@ -1,6 +1,7 @@
 using HotelHub.Application.Abstractions.Authentication;
 using HotelHub.Application.Abstractions.Messaging;
 using HotelHub.Domain.Abstractions;
+using HotelHub.Domain.SharedValueObjects;
 using HotelHub.Domain.Users;
 
 namespace HotelHub.Application.Users.LogIn;

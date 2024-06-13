@@ -1,4 +1,4 @@
-namespace HotelHub.Application.Hotels.Queries;
+namespace HotelHub.Application.Hotels;
 
 public sealed class AddressResponse
 {

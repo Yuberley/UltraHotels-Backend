@@ -1,9 +1,8 @@
-using AutoMapper;
 using HotelHub.Application.Abstractions.Messaging;
 using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Rooms;
 
-namespace HotelHub.Application.Rooms.Queries.GetAll;
+namespace HotelHub.Application.Rooms.GetRooms;
 
 internal sealed class GetAllRoomsHandler : IQueryHandler<GetAllRoomsQuery, IEnumerable<RoomResponse>>
 {

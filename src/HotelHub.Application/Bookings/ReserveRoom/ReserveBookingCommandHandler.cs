@@ -3,7 +3,9 @@ using HotelHub.Application.Abstractions.Messaging;
 using HotelHub.Application.Exceptions;
 using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Bookings;
+using HotelHub.Domain.Guests;
 using HotelHub.Domain.Rooms;
+using HotelHub.Domain.SharedValueObjects;
 using HotelHub.Domain.Users;
 
 namespace HotelHub.Application.Bookings.ReserveRoom;
@@ -13,6 +15,7 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
     private readonly IUserRepository _userRepository;
     private readonly IRoomRepository _roomRepository;
     private readonly IBookingRepository _bookingRepository;
+    private readonly IGuestRepository _guestRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly PricingService _pricingService;
     private readonly IDateTimeProvider _dateTimeProvider;
@@ -22,7 +25,7 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
         IBookingRepository bookingRepository, 
         IUnitOfWork unitOfWork, 
         PricingService pricingService, 
-        IDateTimeProvider dateTimeProvider, IUserRepository userRepository)
+        IDateTimeProvider dateTimeProvider, IUserRepository userRepository, IGuestRepository guestRepository)
     {
         _roomRepository = roomRepository;
         _bookingRepository = bookingRepository;
@@ -30,6 +33,7 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
         _pricingService = pricingService;
         _dateTimeProvider = dateTimeProvider;
         _userRepository = userRepository;
+        _guestRepository = guestRepository;
     }
     
     public async Task<Result<Guid>> Handle(ReserveBookingCommand request, CancellationToken cancellationToken)
@@ -46,6 +50,12 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
         if (room is null)
         {
             return Result.Failure<Guid>(RoomErrors.NotFound);
+        }
+        
+        int maxGuests = room.NumberGuests.Adults + room.NumberGuests.Children;
+        if (request.Guests.Count > maxGuests)
+        {
+            return Result.Failure<Guid>(RoomErrors.ExcessiveGuests);
         }
         
         if (room.IsActive.Value == false)
@@ -67,10 +77,31 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
                 user.Id,
                 duration,
                 _dateTimeProvider.UtcNow,
-                _pricingService);
+                _pricingService,
+                new EmergencyContactFullName(request.EmergencyContactFullName),
+                PhoneNumber.Create(request.EmergencyContactPhoneNumber)
+            );
             
             _bookingRepository.Add(booking);
             
+            var guests = request.Guests.Select(g => new Guest(
+                Guid.NewGuid(),
+                booking.Id,
+                new FirstName(g.FirstName),
+                new LastName(g.LastName),
+                new Email(g.Email),
+                PhoneNumber.Create(g.Phone),
+                new BirthDate(g.BirthDate),
+                Gender.Create(g.Gender),
+                DocumentType.Create(g.TypeDocument),
+                new DocumentNumber(g.Document),
+                _dateTimeProvider.UtcNow
+                )).ToList();
+            
+                
+            // void AddList(List<Guest> guests);
+            _guestRepository.AddList(guests);
+                
             await _unitOfWork.SaveChangesAsync(cancellationToken);
             
             return booking.Id;

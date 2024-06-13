@@ -4,7 +4,7 @@ using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Hotels;
 using HotelHub.Domain.SharedValueObjects;
 
-namespace HotelHub.Application.Hotels.Commands.Create;
+namespace HotelHub.Application.Hotels.CreateHotel;
 
 
 internal sealed class AddHotelCommandHandler : ICommandHandler<AddHotelCommand, Guid>

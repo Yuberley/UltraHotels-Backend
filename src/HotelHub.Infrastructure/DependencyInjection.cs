@@ -5,6 +5,7 @@ using HotelHub.Application.Abstractions.Data;
 using HotelHub.Application.Abstractions.Email;
 using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Bookings;
+using HotelHub.Domain.Guests;
 using HotelHub.Domain.Hotels;
 using HotelHub.Domain.Rooms;
 using HotelHub.Domain.Users;
@@ -59,6 +60,7 @@ public static class DependencyInjection
         services.AddScoped<IRoomRepository, RoomRepository>();
         services.AddScoped<IBookingRepository, BookingRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IGuestRepository, GuestRepository>();
     }
 
     private static void AddApiVersioning(IServiceCollection services)

@@ -15,7 +15,7 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(user => user.Email)
             .HasConversion(
                 email => email.Value,
-                value => new Domain.Users.Email(value))
+                value => new Domain.SharedValueObjects.Email(value))
             .HasMaxLength(100);
         builder.HasIndex(user => user.Email).IsUnique();
         

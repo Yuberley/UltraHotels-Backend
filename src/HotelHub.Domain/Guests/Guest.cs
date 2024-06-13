@@ -3,7 +3,7 @@ using HotelHub.Domain.SharedValueObjects;
 
 namespace HotelHub.Domain.Guests;
 
-public sealed  class Guest : Entity
+public sealed class Guest : Entity
 {
     public Guest (
         Guid guestId,
@@ -16,8 +16,6 @@ public sealed  class Guest : Entity
         Gender gender,
         DocumentType documentType,
         DocumentNumber documentNumber,
-        EmergencyContactFullName emergencyContactFullName,
-        PhoneNumber emergencyContactPhoneNumber,
         DateTime createdAtOnUtc
     ) : base(guestId)
     {
@@ -30,8 +28,6 @@ public sealed  class Guest : Entity
         Gender = gender;
         DocumentType = documentType;
         DocumentNumber = documentNumber;
-        EmergencyContactFullName = emergencyContactFullName;
-        EmergencyContactPhoneNumber = emergencyContactPhoneNumber;
         CreatedAtOnUtc = createdAtOnUtc;
     }
     
@@ -48,8 +44,5 @@ public sealed  class Guest : Entity
     public Gender Gender { get; private set; }
     public DocumentType DocumentType { get; private set; }
     public DocumentNumber DocumentNumber { get; private set; }
-    public EmergencyContactFullName EmergencyContactFullName { get; private set; }
-    public PhoneNumber EmergencyContactPhoneNumber { get; private set; }
     public DateTime CreatedAtOnUtc { get; private set; }
-    
 }

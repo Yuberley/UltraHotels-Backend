@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "sldB689oYpqDDARTNa5snBgDKDQ/qfrP6Ww1CMLnAZDC3MGl61hseP84ZssrWNKBm/IvLQ4L7BrA6b3pNLacvQ==",
+  "dgSpecHash": "dLzlr9t4m0/U7yx7fDggwFRVtD4o+M2Sx4FmpoLojlBybihiNcGgKXXq2ZABZ/XuB+fnHaxDkOtQF5jLnXx6nA==",
   "success": true,
   "projectFilePath": "C:\\Users\\yuber\\Desktop\\HotelHub\\src\\HotelHub.Application\\HotelHub.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yuber\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.1\\fluentvalidation.dependencyinjectionextensions.11.9.1.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\mediatr\\12.3.0\\mediatr.12.3.0.nupkg.sha512",

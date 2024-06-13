@@ -1,8 +1,22 @@
 namespace HotelHub.Domain.Guests;
 
-public enum Gender
+public sealed record Gender(string Value)
 {
-    Male,
-    Female,
-    Other
+    private static readonly Gender Male = new Gender("male");
+    private static readonly Gender Female = new Gender("female");
+    private static readonly Gender Other = new Gender("other");
+    
+    public static Gender Create(string value)
+    {
+        string lowerValue = value.ToLower();
+        return All.FirstOrDefault(c => c.Value == lowerValue) ??
+               throw new ApplicationException("The gender value is invalid");
+    }
+    
+    public static readonly IReadOnlyCollection<Gender> All = new[]
+    {
+        Male,
+        Female,
+        Other
+    };
 }

@@ -29,9 +29,9 @@ internal sealed class GuestConfiguration : IEntityTypeConfiguration<Guest>
         builder.Property(guest => guest.Email)
             .HasConversion(
                 email => email.Value,
-                value => new Domain.Guests.Email(value))
+                value => new Domain.SharedValueObjects.Email(value))
             .HasMaxLength(100);
-        builder.HasIndex(guest => guest.Email).IsUnique();
+        builder.HasIndex(guest => guest.Email);
         
         builder.Property(guest => guest.PhoneNumber)
             .HasConversion(
@@ -46,35 +46,23 @@ internal sealed class GuestConfiguration : IEntityTypeConfiguration<Guest>
         
         builder.Property(guest => guest.Gender)
             .HasConversion(
-                gender => gender.ToString(),
-                gender => (Gender)Enum.Parse(typeof(Gender), gender))
-            .HasMaxLength(10);
+                gender => gender.Value,
+                gender => Gender.Create(gender))
+            .HasMaxLength(30);
         
         builder.Property(guest => guest.DocumentType)
             .HasConversion(
-                documentType => documentType.ToString(),
-                documentType => (DocumentType)Enum.Parse(typeof(DocumentType), documentType))
-            .HasMaxLength(10);
+                documentType => documentType.Value,
+                documentType => DocumentType.Create(documentType))
+            .HasMaxLength(40);
         
         builder.Property(guest => guest.DocumentNumber)
             .HasConversion(
                 documentNumber => documentNumber.Value,
                 value => new DocumentNumber(value))
-            .HasMaxLength(20);
+            .HasMaxLength(50);
         
-        builder.Property(guest => guest.EmergencyContactPhoneNumber)
-            .HasConversion(
-                ecpn => ecpn.Value,
-                value => PhoneNumber.Create(value))
-            .HasMaxLength(15);
-        
-        builder.Property(guest => guest.EmergencyContactFullName)
-            .HasConversion(
-                ecfn => ecfn.Value,
-                value => new EmergencyContactFullName(value))
-            .HasMaxLength(200);
-        
-        builder.Property(guest => guest.CreatedAtOnUtc)
+       builder.Property(guest => guest.CreatedAtOnUtc)
             .HasDefaultValueSql("NOW()");
         
         builder.HasOne<Booking>()

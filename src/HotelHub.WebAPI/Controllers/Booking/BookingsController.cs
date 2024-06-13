@@ -51,7 +51,20 @@ public class BookingsController : ControllerBase
             request.RoomId,
             request.UserId,
             request.StartDate,
-            request.EndDate);
+            request.EndDate,
+            request.EmergencyContactFullName,
+            request.EmergencyContactPhoneNumber,
+            request.Guests.Select(g => new GuestCommand(
+                g.FirstName,
+                g.LastName,
+                g.Email,
+                g.TypeDocument,
+                g.Document,
+                g.Phone,
+                g.Gender,
+                g.BirthDate
+            )).ToList()
+            );
 
         Result<Guid> result = await _sender.Send(command, cancellationToken);
 

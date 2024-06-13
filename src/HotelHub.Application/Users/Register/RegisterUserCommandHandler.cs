@@ -1,5 +1,6 @@
 using HotelHub.Application.Abstractions.Authentication;
 using HotelHub.Domain.Abstractions;
+using HotelHub.Domain.SharedValueObjects;
 using HotelHub.Domain.Users;
 using MediatR;
 

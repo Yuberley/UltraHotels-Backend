@@ -1,8 +1,8 @@
 using Asp.Versioning;
-using HotelHub.Application.Hotels.Commands.Create;
-using HotelHub.Application.Hotels.Queries;
-using HotelHub.Application.Hotels.Queries.GetAll;
-using HotelHub.Application.Hotels.Queries.GetById;
+using HotelHub.Application.Hotels;
+using HotelHub.Application.Hotels.CreateHotel;
+using HotelHub.Application.Hotels.GetHotel;
+using HotelHub.Application.Hotels.GetHotels;
 using HotelHub.Domain.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

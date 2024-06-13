@@ -1,3 +1,3 @@
-namespace HotelHub.Domain.Guests;
+namespace HotelHub.Domain.Bookings;
 
 public sealed record EmergencyContactFullName(string Value);
