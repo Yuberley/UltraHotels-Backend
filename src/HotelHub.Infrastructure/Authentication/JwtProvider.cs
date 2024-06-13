@@ -23,7 +23,8 @@ internal sealed class JwtProvider : IJwtProvider
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Email, user.Email.Value),
-            new Claim(JwtRegisteredClaimNames.Jti, user.Role.Value)
+            new Claim(ClaimTypes.Role, user.Role.Value),
+            // new Claim("role", user.Role.Value),
         };
         
         var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey));
@@ -39,5 +40,11 @@ internal sealed class JwtProvider : IJwtProvider
         );
         
         return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+    
+    public JwtSecurityToken DecodeToken(string token)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        return tokenHandler.ReadJwtToken(token);
     }
 }

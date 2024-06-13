@@ -13,3 +13,9 @@ public sealed class RoomResponse
     public bool IsActive { get; init; }
     public DateTime CreatedAtOnUtc { get; init; }
 }
+
+public sealed class NumberGuestsResponse
+{
+    public int Adults { get; init; }
+    public int Children { get; init; }
+}

@@ -29,8 +29,4 @@
       <ProjectReference Include="..\HotelHub.Infrastructure\HotelHub.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="OpenApi\" />
-    </ItemGroup>
-
 </Project>

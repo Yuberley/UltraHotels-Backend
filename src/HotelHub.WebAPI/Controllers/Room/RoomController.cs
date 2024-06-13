@@ -3,6 +3,7 @@ using HotelHub.Application.Rooms;
 using HotelHub.Application.Rooms.CreateRoom;
 using HotelHub.Application.Rooms.GetRooms;
 using HotelHub.Application.Rooms.SearchRooms;
+using HotelHub.Application.Rooms.UpdateRoom;
 using HotelHub.Domain.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -83,4 +84,33 @@ public class RoomController : ControllerBase
         
         return Ok(result.Value);
     }
+    
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateRoom(
+        Guid id,
+        AddRoomRequest request,
+        CancellationToken cancellationToken)
+    {
+        var command = new UpdateRoomCommand(
+            id,
+            request.HotelId,
+            request.RoomNumber,
+            request.Type,
+            request.NumberGuestsAdults,
+            request.NumberGuestsChildren,
+            request.BaseCost,
+            request.Currency,
+            request.Taxes,
+            request.IsActive);
+        
+        Result result = await _sender.Send(command, cancellationToken);
+        
+        if (result.IsFailure)
+        {
+            return BadRequest(result.Error);
+        }
+        
+        return Ok();
+    }
+    
 }

@@ -3,8 +3,10 @@ using HotelHub.Application.Hotels;
 using HotelHub.Application.Hotels.CreateHotel;
 using HotelHub.Application.Hotels.GetHotel;
 using HotelHub.Application.Hotels.GetHotels;
+using HotelHub.Application.Hotels.UpdateHotel;
 using HotelHub.Domain.Abstractions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelHub.WebAPI.Controllers.Hotel;
@@ -22,7 +24,7 @@ public class HotelController : ControllerBase
     }
     
     
-    [HttpGet]
+    [HttpGet, Authorize(Roles = "Admin, User")]
     public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
         var query = new GetAllHotelsQuery();
@@ -73,5 +75,32 @@ public class HotelController : ControllerBase
         }
         
         return Ok(result.Value);
+    }
+    
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateHotel(
+        Guid id,
+        AddHotelRequest request,
+        CancellationToken cancellationToken)
+    {
+        var command = new UpdateHotelCommand(
+            id,
+            request.Name,
+            request.Description,
+            request.Country,
+            request.State,
+            request.City,
+            request.ZipCode,
+            request.Street,
+            request.IsActive);
+        
+        Result result = await _sender.Send(command, cancellationToken);
+        
+        if (result.IsFailure)
+        {
+            return BadRequest(result.Error);
+        }
+        
+        return Ok();
     }
 }

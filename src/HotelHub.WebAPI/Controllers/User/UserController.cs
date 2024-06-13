@@ -38,7 +38,7 @@ public class UserController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequest request, CancellationToken cancellationToken)
     {
-        var command = new RegisterUserCommand(request.Email, request.Password, request.Role);
+        var command = new RegisterUserCommand(request.Email, request.Password);
         Result<Guid> result = await _sender.Send(command, cancellationToken);
         
         if (result.IsFailure)

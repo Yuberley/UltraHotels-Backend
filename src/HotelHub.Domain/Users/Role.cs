@@ -22,4 +22,6 @@ public record Role(string Value)
         Admin,
         User
     };
+    
+    public static Role Default => User;
 }

@@ -22,14 +22,6 @@ internal sealed class RegisterUserCommandHandler : IRequestHandler<RegisterUserC
     
     public async Task<Result<Guid>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
-        
-        var role = new Role(request.Role);
-        
-        if (!role.IsValid)
-        {
-            return Result.Failure<Guid>(UserErrors.RoleNotFound);
-        }
-        
         var existingUser = await _userRepository.GetByEmailAsync(new Email(request.Email), cancellationToken);
 
         if (existingUser is not null)
@@ -43,7 +35,7 @@ internal sealed class RegisterUserCommandHandler : IRequestHandler<RegisterUserC
             Guid.NewGuid(),
             new Email(request.Email),
             new Password(hashedPassword),
-            new Role(request.Role)
+            Role.Default
         );
         
         _userRepository.Add(user);

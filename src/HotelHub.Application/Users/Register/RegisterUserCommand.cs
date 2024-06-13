@@ -4,5 +4,4 @@ namespace HotelHub.Application.Users.Register;
 
 public sealed record RegisterUserCommand(  
     string Email,
-    string Password,
-    string Role) : ICommand<Guid>;
+    string Password) : ICommand<Guid>;
