@@ -23,4 +23,13 @@ public class BookingErrors
     public static readonly Error AlreadyStarted = new(
         "Booking.AlreadyStarted",
         "The booking has already started");
+    
+    public static readonly Error InvalidStartDate = new(
+        "Booking.InvalidStartDate",
+        "The start date must be greater than the current date");
+    
+    public static readonly Error InvalidEndDate = new(
+        "Booking.InvalidEndDate",
+        "The end date must be greater than the current date");
+        
 }

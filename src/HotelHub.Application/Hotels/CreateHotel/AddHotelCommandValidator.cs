@@ -20,6 +20,6 @@ public sealed class AddHotelCommandValidator : AbstractValidator<AddHotelCommand
         
         RuleFor(c => c.Street).NotEmpty().MaximumLength(200);
         
-        // RuleFor(c => c.IsActive).NotNull();
+        RuleFor(c => c.IsActive).NotNull();
     }
 }

@@ -32,6 +32,13 @@ internal sealed class HotelRepository : IHotelRepository
     
     public void Update(Hotel hotel)
     {
+        var existingHotel = _dbContext.Hotels.Find(hotel.Id);
+        
+        if (existingHotel != null)
+        {
+            _dbContext.Entry(existingHotel).State = EntityState.Detached;
+        }
+        
         _dbContext.Hotels.Update(hotel);
     }
     

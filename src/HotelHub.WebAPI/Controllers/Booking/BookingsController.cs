@@ -4,10 +4,12 @@ using HotelHub.Application.Bookings.GetBooking;
 using HotelHub.Application.Bookings.ReserveRoom;
 using HotelHub.Domain.Abstractions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelHub.WebAPI.Controllers.Booking;
 
+[Authorize]
 [ApiController]
 [ApiVersion(ApiVersions.V1)]
 [Route("api/v{version:apiVersion}/bookings")]
@@ -21,7 +23,7 @@ public class BookingsController : ControllerBase
     }
     
     
-    [HttpGet]
+    [HttpGet, Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetBookings(CancellationToken cancellationToken)
     {
         var query = new GetAllBookingQuery();
@@ -31,7 +33,7 @@ public class BookingsController : ControllerBase
         return result.IsSuccess ? Ok(result.Value) : NotFound();
     }
     
-    [HttpGet("{id}")]
+    [HttpGet("{id}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetBooking(Guid id, CancellationToken cancellationToken)
     {
         var query = new GetBookingQuery(id);
@@ -42,7 +44,7 @@ public class BookingsController : ControllerBase
     }
     
 
-    [HttpPost]
+    [HttpPost, Authorize(Roles = "User")]
     public async Task<IActionResult> ReserveBooking(
         ReserveBookingRequest request,
         CancellationToken cancellationToken)

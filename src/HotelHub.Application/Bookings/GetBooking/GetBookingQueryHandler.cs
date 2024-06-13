@@ -31,6 +31,7 @@ public class GetBookingQueryHandler : IQueryHandler<GetBookingQuery, BookingResp
             Status = (int)booking.Status,
             PriceAmount = booking.PriceForPeriod.Amount,
             PriceCurrency = booking.PriceForPeriod.Currency.Code,
+            TaxesPercentage = booking.Taxes.Value,
             TaxesPriceAmount = booking.TaxesPrice.Amount,
             TaxesPriceCurrency = booking.TaxesPrice.Currency.Code,
             TotalPriceAmount = booking.TotalPrice.Amount,

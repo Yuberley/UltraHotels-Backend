@@ -26,24 +26,6 @@ internal sealed class RoomRepository : IRoomRepository
     }
     
     
-    
-    public Task<List<Room>> SearchAsync(DateOnly startDate, DateOnly endDate, CancellationToken cancellationToken = default)
-    {
-        // Filtrar las habitaciones activas
-        var activeRooms = _dbContext.Rooms.Where(r => r.IsActive.Value != false);
-        
-        // Obtener las reservas que se solapan con el rango de fechas
-        var overlappingBookings = _dbContext.Bookings
-            .Where(b => b.Duration.Start <= endDate && b.Duration.End >= startDate)
-            .Select(b => b.RoomId);
-        
-        // Filtrar las habitaciones que no tienen reservas que se superpongan con el rango de fechas
-        var availableRooms = activeRooms.Where(r => !overlappingBookings.Contains(r.Id));
-        
-        // Ejecutar la consulta y devolver los resultados
-        return availableRooms.ToListAsync(cancellationToken);
-    }
-    
     public void Add(Room room)
     {
         _dbContext.Rooms.Add(room);
@@ -51,6 +33,13 @@ internal sealed class RoomRepository : IRoomRepository
     
     public void Update(Room room)
     {
+        var existingRoom = _dbContext.Rooms.Find(room.Id);
+        
+        if (existingRoom != null)
+        {
+            _dbContext.Entry(existingRoom).State = EntityState.Detached;
+        }
+        
         _dbContext.Rooms.Update(room);
     }
     

@@ -4,6 +4,7 @@ using HotelHub.Application.Exceptions;
 using HotelHub.Domain.Abstractions;
 using HotelHub.Domain.Bookings;
 using HotelHub.Domain.Guests;
+using HotelHub.Domain.Hotels;
 using HotelHub.Domain.Rooms;
 using HotelHub.Domain.SharedValueObjects;
 using HotelHub.Domain.Users;
@@ -19,13 +20,14 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
     private readonly IUnitOfWork _unitOfWork;
     private readonly PricingService _pricingService;
     private readonly IDateTimeProvider _dateTimeProvider;
+    private readonly IHotelRepository _hotelRepository;
     
     public ReserveBookingCommandHandler(
         IRoomRepository roomRepository, 
         IBookingRepository bookingRepository, 
         IUnitOfWork unitOfWork, 
         PricingService pricingService, 
-        IDateTimeProvider dateTimeProvider, IUserRepository userRepository, IGuestRepository guestRepository)
+        IDateTimeProvider dateTimeProvider, IUserRepository userRepository, IGuestRepository guestRepository, IHotelRepository hotelRepository)
     {
         _roomRepository = roomRepository;
         _bookingRepository = bookingRepository;
@@ -34,10 +36,21 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
         _dateTimeProvider = dateTimeProvider;
         _userRepository = userRepository;
         _guestRepository = guestRepository;
+        _hotelRepository = hotelRepository;
     }
     
     public async Task<Result<Guid>> Handle(ReserveBookingCommand request, CancellationToken cancellationToken)
     {
+        if (request.StartDate < DateOnly.FromDateTime(_dateTimeProvider.UtcNow))
+        {
+            return Result.Failure<Guid>(BookingErrors.InvalidStartDate);
+        }
+        
+        if (request.EndDate < request.StartDate)
+        {
+            return Result.Failure<Guid>(BookingErrors.InvalidEndDate);
+        }
+        
         User? user = await _userRepository.GetByIdAsync(request.UserId, cancellationToken);
         
         if (user is null)
@@ -68,6 +81,13 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
         if (await _bookingRepository.IsOverlappingAsync(room, duration, cancellationToken))
         {
             return Result.Failure<Guid>(BookingErrors.Overlap);
+        }
+        
+        var hotel = await _hotelRepository.GetByIdAsync(room.HotelId, cancellationToken);
+        
+        if (hotel is null)
+        {
+            return Result.Failure<Guid>(HotelErrors.NotFound(room.HotelId));
         }
         
         try

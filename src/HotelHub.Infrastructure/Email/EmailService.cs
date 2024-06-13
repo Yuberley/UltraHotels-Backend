@@ -5,7 +5,7 @@ namespace HotelHub.Infrastructure.Email;
 
 internal sealed class EmailService : IEmailService
 {
-    
+    // TODO: Change the email origin and password to environment variables.
     private const string EmailOrigin = "yeferson.guerrero2613@alumnos.udg.mx";
     private const string EmailPassword = "llhh wwop tore melg";
     

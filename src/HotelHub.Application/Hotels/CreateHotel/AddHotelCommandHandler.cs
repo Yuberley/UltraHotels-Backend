@@ -22,17 +22,12 @@ internal sealed class AddHotelCommandHandler : ICommandHandler<AddHotelCommand, 
     
     public async Task<Result<Guid>> Handle(AddHotelCommand request, CancellationToken cancellationToken)
     {
-        
-        IsActive isActive = request.IsActive.HasValue && request.IsActive.Value
-            ? IsActive.Yes
-            : IsActive.No;
-        
         var hotel = new Hotel(
             Guid.NewGuid(),
             new Name(request.Name),
             new Description(request.Description),
             new Address(request.Country, request.State, request.City, request.ZipCode, request.Street),
-            isActive,
+            IsActive.FromValue(request.IsActive),
             _dateTimeProvider.UtcNow
             );
       

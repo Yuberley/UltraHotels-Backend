@@ -10,5 +10,5 @@ public record AddHotelCommand(
     string City,
     string ZipCode,
     string Street,
-    bool? IsActive
+    bool IsActive
     ) : ICommand<Guid>;

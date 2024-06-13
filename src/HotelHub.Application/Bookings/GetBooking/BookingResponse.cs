@@ -14,6 +14,8 @@ public class BookingResponse
     
     public string PriceCurrency { get; init; }
     
+    public decimal TaxesPercentage { get; init; }
+    
     public decimal TaxesPriceAmount { get; init; }
     
     public string TaxesPriceCurrency { get; init; }

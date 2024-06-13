@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HotelHub.WebAPI.Controllers.Hotel;
 
+[Authorize(Roles = "Admin")]
 [ApiController]
 [ApiVersion(ApiVersions.V1)]
 [Route("api/v{version:apiVersion}/hotels")]
@@ -23,8 +24,7 @@ public class HotelController : ControllerBase
         _sender = sender;
     }
     
-    
-    [HttpGet, Authorize(Roles = "Admin, User")]
+    [HttpGet]
     public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
         var query = new GetAllHotelsQuery();

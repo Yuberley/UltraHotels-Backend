@@ -1,25 +1,44 @@
 using System.Data;
 using Dapper;
+using HotelHub.Application.Abstractions.Clock;
 using HotelHub.Application.Abstractions.Data;
 using HotelHub.Application.Abstractions.Messaging;
 using HotelHub.Domain.Abstractions;
+using HotelHub.Domain.Rooms;
 
 namespace HotelHub.Application.Rooms.SearchRooms;
 
 internal sealed class SearchRoomsQueryHandler : IQueryHandler<SearchRoomsQuery, IReadOnlyList<RoomSearchResponse>>
 {
     private readonly IDbConnectionFactory _dbConnectionFactory;
+    private readonly IDateTimeProvider _dateTimeProvider;
     
-    public SearchRoomsQueryHandler(IDbConnectionFactory dbConnectionFactory)
+    public SearchRoomsQueryHandler(IDbConnectionFactory dbConnectionFactory, IDateTimeProvider dateTimeProvider)
     {
         _dbConnectionFactory = dbConnectionFactory;
+        _dateTimeProvider = dateTimeProvider;
     }
     
     public async Task<Result<IReadOnlyList<RoomSearchResponse>>> Handle(SearchRoomsQuery request, CancellationToken cancellationToken)
     {
         if (request.StartDate > request.EndDate)
         {
-            return new List<RoomSearchResponse>();
+            return Result.Failure<IReadOnlyList<RoomSearchResponse>>(RoomErrors.WrongDates);
+        }
+        
+        if (request.StartDate < DateOnly.FromDateTime(_dateTimeProvider.UtcNow))
+        {
+            return Result.Failure<IReadOnlyList<RoomSearchResponse>>(RoomErrors.InvalidStartDate);
+        }
+        
+        if (request.EndDate < request.StartDate)
+        {
+            return Result.Failure<IReadOnlyList<RoomSearchResponse>>(RoomErrors.InvalidEndDate);
+        }
+        
+        if ( request.NumberAdults <= 0 || request.NumberChildren < 0)
+        {
+            return Result.Failure<IReadOnlyList<RoomSearchResponse>>(RoomErrors.NumberOfGuestsMustBeGreaterThanZero);
         }
         
         using IDbConnection connection = _dbConnectionFactory.CreateConnection();

@@ -6,10 +6,12 @@ using HotelHub.Application.Rooms.SearchRooms;
 using HotelHub.Application.Rooms.UpdateRoom;
 using HotelHub.Domain.Abstractions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelHub.WebAPI.Controllers.Room;
 
+[Authorize]
 [ApiController]
 [ApiVersion(ApiVersions.V1)]
 [Route("api/v{version:apiVersion}/rooms")]
@@ -22,7 +24,7 @@ public class RoomController : ControllerBase
         _sender = sender;
     }
     
-    [HttpGet]
+    [HttpGet, Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
         var query = new GetAllRoomsQuery();
@@ -36,7 +38,7 @@ public class RoomController : ControllerBase
         return Ok(result.Value);
     }
     
-    [HttpPost]
+    [HttpPost, Authorize(Roles = "Admin")]
     public async Task<IActionResult> AddRoom(
         AddRoomRequest request,
         CancellationToken cancellationToken)
@@ -63,7 +65,7 @@ public class RoomController : ControllerBase
     }
     
     
-    [HttpGet("search")]
+    [HttpGet("search"), Authorize(Roles = "Admin, User")]
     public async Task<IActionResult> SearchRooms(
         SearchRoomsRequest request,
         CancellationToken cancellationToken)
@@ -85,7 +87,7 @@ public class RoomController : ControllerBase
         return Ok(result.Value);
     }
     
-    [HttpPut("{id}")]
+    [HttpPut("{id}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateRoom(
         Guid id,
         AddRoomRequest request,
