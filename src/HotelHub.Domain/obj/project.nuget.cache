@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "a+/u8JsPFcTeMBiwuWCMqaQS+izl5HuJ1OubA/k67BTybF4Gtn6vCjqK5WtdiNofocIBnPBh9xDyZmckvvfwlg==",
+  "dgSpecHash": "OuLsBcByizrrr2MRM9l7X25AosI7/toxBz5zkqNcloLv6VK71yfn8W0jGHMY9VY2gXOguTDRVbLIfu/Ft8eqHg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yuber\\Desktop\\HotelHub\\src\\HotelHub.Domain\\HotelHub.Domain.csproj",
+  "projectFilePath": "Z:\\ToHelp\\New folder\\HotelHub-Backend\\src\\HotelHub.Domain\\HotelHub.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\yuber\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512"
+    "C:\\Users\\fabia\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512"
   ],
   "logs": []
 }

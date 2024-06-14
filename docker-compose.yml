@@ -1,41 +1,31 @@
-﻿services:
-#  hotelhub:
-#    image: hotelhub
-#    build:
-#      context: .
-#      dockerfile: HotelHub/Dockerfile
-#
-#  hotelhub.webapi:
-#    image: hotelhub.webapi
-#    build:
-#      context: .
-#      dockerfile: src/HotelHub.WebAPi/Dockerfile
-#
-#  hotelhub.webapi-1:
-#    image: hotelhub.webapi-1
-#    build:
-#      context: .
-#      dockerfile: src/HotelHub.WebAPI/Dockerfile
-
-
-  postgres: # https://hub.docker.com/_/postgres
-    image: postgres:${POSTGRES_VERSION}
-    container_name: hotelhub_postgres
-    restart: on-failure # only restart if the container crashes, but not if it's stopped manually
-    environment:
-      POSTGRES_DB: hotelhub
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+﻿
+services:
+  hotelhub.webapi:
+    image: hotelhub.webapi
     ports:
-      - "5432:5432"
-    volumes:
-      - vol_hotelhub_postgres:/var/lib/postgresql/data
-    networks:
-      - hotelhub_network
-
-
-volumes:
-  vol_hotelhub_postgres:
+      - "8080:8080"
+    build:
+      context: .
+      dockerfile: src/HotelHub.WebAPI/Dockerfile
+#
+#  postgres: # https://hub.docker.com/_/postgres
+#    image: postgres:${POSTGRES_VERSION}
+#    container_name: hotelhub_postgres
+#    restart: on-failure # only restart if the container crashes, but not if it's stopped manually
+#    environment:
+#      POSTGRES_DB: hotelhub
+#      POSTGRES_USER: ${POSTGRES_USER}
+#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - vol_hotelhub_postgres:/var/lib/postgresql/data
+#    networks:
+#      - hotelhub_network
+#
+#
+#volumes:
+#  vol_hotelhub_postgres:
 
 networks:
   hotelhub_network:
