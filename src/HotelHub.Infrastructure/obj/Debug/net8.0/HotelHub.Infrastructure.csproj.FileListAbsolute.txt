@@ -16,3 +16,21 @@ C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Infrastructure\obj\Debug\net8.0\Hot
 C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Infrastructure\obj\Debug\net8.0\refint\HotelHub.Infrastructure.dll
 C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.Infrastructure.pdb
 C:\Users\yuber\Desktop\HotelHub\src\HotelHub.Infrastructure\obj\Debug\net8.0\ref\HotelHub.Infrastructure.dll
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\bin\Debug\net8.0\HotelHub.Infrastructure.deps.json
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\bin\Debug\net8.0\HotelHub.Infrastructure.dll
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\bin\Debug\net8.0\HotelHub.Infrastructure.pdb
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\bin\Debug\net8.0\HotelHub.Application.dll
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\bin\Debug\net8.0\HotelHub.Domain.dll
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\bin\Debug\net8.0\HotelHub.Application.pdb
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\bin\Debug\net8.0\HotelHub.Domain.pdb
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.Infrastructure.csproj.AssemblyReference.cache
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.Infrastructure.AssemblyInfoInputs.cache
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.Infrastructure.AssemblyInfo.cs
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.Infrastructure.csproj.CoreCompileInputs.cache
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.Infrastructure.sourcelink.json
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.2DEC2AE1.Up2Date
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.Infrastructure.dll
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\refint\HotelHub.Infrastructure.dll
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\HotelHub.Infrastructure.pdb
+Z:\ToHelp\New folder\HotelHub-Backend\src\HotelHub.Infrastructure\obj\Debug\net8.0\ref\HotelHub.Infrastructure.dll

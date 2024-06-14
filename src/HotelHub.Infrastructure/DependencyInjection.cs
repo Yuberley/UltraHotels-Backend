@@ -44,6 +44,8 @@ public static class DependencyInjection
     
      private static void AddPersistence(IServiceCollection services, IConfiguration configuration)
     {
+        ArgumentNullException.ThrowIfNull(configuration);
+
         string connectionString = configuration.GetConnectionString("PostgresConnection") ??
                                   throw new ArgumentNullException(nameof(configuration));
 

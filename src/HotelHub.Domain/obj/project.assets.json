@@ -39,27 +39,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yuber\\.nuget\\packages\\": {}
+    "C:\\Users\\fabia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yuber\\Desktop\\HotelHub\\src\\HotelHub.Domain\\HotelHub.Domain.csproj",
+      "projectUniqueName": "Z:\\ToHelp\\New folder\\HotelHub-Backend\\src\\HotelHub.Domain\\HotelHub.Domain.csproj",
       "projectName": "HotelHub.Domain",
-      "projectPath": "C:\\Users\\yuber\\Desktop\\HotelHub\\src\\HotelHub.Domain\\HotelHub.Domain.csproj",
-      "packagesPath": "C:\\Users\\yuber\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yuber\\Desktop\\HotelHub\\src\\HotelHub.Domain\\obj\\",
+      "projectPath": "Z:\\ToHelp\\New folder\\HotelHub-Backend\\src\\HotelHub.Domain\\HotelHub.Domain.csproj",
+      "packagesPath": "C:\\Users\\fabia\\.nuget\\packages\\",
+      "outputPath": "Z:\\ToHelp\\New folder\\HotelHub-Backend\\src\\HotelHub.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\yuber\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\fabia\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
