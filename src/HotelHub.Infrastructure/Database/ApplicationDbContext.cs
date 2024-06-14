@@ -1,17 +1,119 @@
+using HotelHub.Application.Abstractions.Clock;
+using HotelHub.Application.Exceptions;
 using HotelHub.Domain.Abstractions;
+using HotelHub.Domain.Bookings;
+using HotelHub.Domain.Guests;
+using HotelHub.Domain.Hotels;
+using HotelHub.Domain.Rooms;
+using HotelHub.Domain.Users;
+using HotelHub.Infrastructure.Outbox;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace HotelHub.Infrastructure.Database;
 
 public class ApplicationDbContext : DbContext, IUnitOfWork
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    private readonly IDateTimeProvider _dateTimeProvider;
+    private readonly IMediator _mediator;
+    
+    public ApplicationDbContext(
+        DbContextOptions<ApplicationDbContext> options,
+        IDateTimeProvider dateTimeProvider, IMediator mediator) : base(options)
     {
+        _dateTimeProvider = dateTimeProvider;
+        _mediator = mediator;
     }
-
-    // This method ensures that changes to the database are saved as a single atomic transaction.
+    
+    
+    public DbSet<Hotel> Hotels { get; set; }
+    public DbSet<Guest> Guests { get; set; }
+    public DbSet<Room> Rooms { get; set; }
+    public DbSet<Booking> Bookings { get; set; }
+    
+    public DbSet<User> Users { get; set; }
+    
+    // Sobreescribimos el método OnModelCreating para aplicar las configuraciones de las entidades.
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        
+        base.OnModelCreating(modelBuilder);
+    }
+    
+    
+    // Sobreescribimos el método SaveChangesAsync del DbContext, este método garantiza
+    // que los cambios en la base de datos se guarden como una única transacción atómica.
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        return await base.SaveChangesAsync(cancellationToken);
+        try
+        {
+            IEnumerable<IDomainEvent> domainEvents = ChangeTracker
+                .Entries<Entity>()
+                .Select(entry => entry.Entity)
+                .SelectMany(entity =>
+                {
+                    IReadOnlyList<IDomainEvent> domainEvents = entity.GetDomainEvents();
+                    
+                    return domainEvents;
+                })
+                .ToList();
+            
+            AddDomainEventsAsOutboxMessages();
+            
+            
+            int result = await base.SaveChangesAsync(cancellationToken);
+            
+            await PublishDomainEventsAsync(domainEvents, cancellationToken);
+            
+            return result;
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            throw new ConcurrencyException("Concurrency exception occurred.", ex);
+        }
     }
+    
+    private async Task PublishDomainEventsAsync(IEnumerable<IDomainEvent> domainEvents, CancellationToken cancellationToken)
+    {
+        foreach (var domainEvent in domainEvents)
+        {
+            await _mediator.Publish(domainEvent, cancellationToken);
+        }
+    }
+    
+    /// <summary>
+    /// Se encarga de pasar los eventos de dominio (IDomainEvent) generados por las entidades durante
+    /// la operación en mensajes que se almacenarán en una tabla de "outbox". Estos mensajes se pueden
+    /// procesar posteriormente, permitiendo un enfoque de entrega garantizada y comunicación entre
+    /// diferentes partes del sistema.
+    /// </summary>
+    private void AddDomainEventsAsOutboxMessages()
+    {
+        var outboxMessages = ChangeTracker
+            .Entries<Entity>()
+            .Select(entry => entry.Entity)
+            .SelectMany(entity =>
+            {
+                IReadOnlyList<IDomainEvent> domainEvents = entity.GetDomainEvents();
+                
+                entity.ClearDomainEvents();
+                
+                return domainEvents;
+            })
+            .Select(domainEvent => new OutboxMessage(
+                Guid.NewGuid(),
+                _dateTimeProvider.UtcNow,
+                domainEvent.GetType().Name,
+                JsonConvert.SerializeObject(domainEvent, JsonSerializerSettings)))
+            .ToList();
+        
+        AddRange(outboxMessages);
+    }
+    
+    private static readonly JsonSerializerSettings JsonSerializerSettings = new()
+    {
+        TypeNameHandling = TypeNameHandling.All
+    };
 }
