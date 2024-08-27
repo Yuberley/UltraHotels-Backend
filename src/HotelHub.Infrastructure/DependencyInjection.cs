@@ -31,6 +31,8 @@ public static class DependencyInjection
         
         services.AddTransient<IJwtProvider, JwtProvider>();
         
+        services.AddTransient<IAuthenticatedUser, AuthenticatedUser>();
+        
         services.AddTransient<IHashingService, HashingService>();
         
         AddPersistence(services, configuration);
@@ -44,6 +46,11 @@ public static class DependencyInjection
     
      private static void AddPersistence(IServiceCollection services, IConfiguration configuration)
     {
+        if (configuration == null)
+        {
+            throw new ArgumentNullException(nameof(configuration));
+        }
+        
         string connectionString = configuration.GetConnectionString("PostgresConnection") ??
                                   throw new ArgumentNullException(nameof(configuration));
 

@@ -42,6 +42,9 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+// Add services HttpContextAccessor
+builder.Services.AddHttpContextAccessor();
+
 // Add services to the container.
 builder.Services.AddProblemDetails();
 builder.Services.AddApplication();
@@ -84,7 +87,7 @@ if (app.Environment.IsDevelopment())
     app.ApplyMigrations();
     
     // REMARK: Uncomment if you want to seed initial data.
-    // app.SeedData();
+    app.SeedData();
 }
 
 app.UseHttpsRedirection();

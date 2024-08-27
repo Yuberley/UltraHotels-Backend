@@ -25,8 +25,6 @@ internal sealed class UpdateHotelCommandHandler : ICommandHandler<UpdateHotelCom
             return Result.Failure<Guid>(HotelErrors.NotFound(request.Id));
         }
         
-        
-        
         var newHotel = new Hotel(
             request.Id,
             new Name(request.Name),

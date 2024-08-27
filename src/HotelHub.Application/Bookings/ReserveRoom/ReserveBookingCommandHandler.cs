@@ -1,3 +1,4 @@
+using HotelHub.Application.Abstractions.Authentication;
 using HotelHub.Application.Abstractions.Clock;
 using HotelHub.Application.Abstractions.Messaging;
 using HotelHub.Application.Exceptions;
@@ -21,13 +22,14 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
     private readonly PricingService _pricingService;
     private readonly IDateTimeProvider _dateTimeProvider;
     private readonly IHotelRepository _hotelRepository;
+    private readonly IAuthenticatedUser _authenticatedUser;
     
     public ReserveBookingCommandHandler(
         IRoomRepository roomRepository, 
         IBookingRepository bookingRepository, 
         IUnitOfWork unitOfWork, 
         PricingService pricingService, 
-        IDateTimeProvider dateTimeProvider, IUserRepository userRepository, IGuestRepository guestRepository, IHotelRepository hotelRepository)
+        IDateTimeProvider dateTimeProvider, IUserRepository userRepository, IGuestRepository guestRepository, IHotelRepository hotelRepository, IAuthenticatedUser authenticatedUser)
     {
         _roomRepository = roomRepository;
         _bookingRepository = bookingRepository;
@@ -37,6 +39,7 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
         _userRepository = userRepository;
         _guestRepository = guestRepository;
         _hotelRepository = hotelRepository;
+        _authenticatedUser = authenticatedUser;
     }
     
     public async Task<Result<Guid>> Handle(ReserveBookingCommand request, CancellationToken cancellationToken)
@@ -51,7 +54,9 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
             return Result.Failure<Guid>(BookingErrors.InvalidEndDate);
         }
         
-        User? user = await _userRepository.GetByIdAsync(request.UserId, cancellationToken);
+        Guid userId = _authenticatedUser.GetUserId();
+        
+        User? user = await _userRepository.GetByIdAsync(userId, cancellationToken);
         
         if (user is null)
         {

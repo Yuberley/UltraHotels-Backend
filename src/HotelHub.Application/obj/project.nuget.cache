@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dLzlr9t4m0/U7yx7fDggwFRVtD4o+M2Sx4FmpoLojlBybihiNcGgKXXq2ZABZ/XuB+fnHaxDkOtQF5jLnXx6nA==",
+  "dgSpecHash": "vf/V8G5C+hqiZeXZJwSMtlatfaoIXFNyObbvkyMZtMWA3V63e4CYvv6q1SYmm9DXoteGiBN7GUPx6vHW6CcDag==",
   "success": true,
   "projectFilePath": "C:\\Users\\yuber\\Desktop\\HotelHub\\src\\HotelHub.Application\\HotelHub.Application.csproj",
   "expectedPackageFiles": [
@@ -10,10 +10,18 @@
     "C:\\Users\\yuber\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.1\\fluentvalidation.dependencyinjectionextensions.11.9.1.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\mediatr\\12.3.0\\mediatr.12.3.0.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\yuber\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\yuber\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\yuber\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.0.0-preview1\\microsoft.identitymodel.abstractions.8.0.0-preview1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.0.0-preview1\\microsoft.identitymodel.jsonwebtokens.8.0.0-preview1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\microsoft.identitymodel.logging\\8.0.0-preview1\\microsoft.identitymodel.logging.8.0.0-preview1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.0.0-preview1\\microsoft.identitymodel.tokens.8.0.0-preview1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.0.0-preview1\\system.identitymodel.tokens.jwt.8.0.0-preview1.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\yuber\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

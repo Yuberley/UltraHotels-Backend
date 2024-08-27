@@ -4,7 +4,6 @@ namespace HotelHub.Application.Bookings.ReserveRoom;
 
 public record ReserveBookingCommand(
     Guid RoomId,
-    Guid UserId,
     DateOnly StartDate,
     DateOnly EndDate,
     string EmergencyContactFullName,

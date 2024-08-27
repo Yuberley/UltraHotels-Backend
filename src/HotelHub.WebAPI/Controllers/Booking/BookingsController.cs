@@ -51,7 +51,6 @@ public class BookingsController : ControllerBase
     {
         var command = new ReserveBookingCommand(
             request.RoomId,
-            request.UserId,
             request.StartDate,
             request.EndDate,
             request.EmergencyContactFullName,
